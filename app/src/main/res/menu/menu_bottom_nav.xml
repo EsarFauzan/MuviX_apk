@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/nav_schedule"
+        android:icon="@drawable/ic_schedule"
+        android:title="Jadwal" />
+    <item
+        android:id="@+id/nav_history"
+        android:icon="@drawable/ic_history"
+        android:title="History" />
+    <item
+        android:id="@+id/nav_subscribe"
+        android:icon="@drawable/ic_subscribe"
+        android:title="Subscribe" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profil" />
+</menu>

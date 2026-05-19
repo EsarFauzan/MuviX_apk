@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MuviX</string>
+    <string name="base_url">https://68ff8dfbe02b16d1753e765d.mockapi.io/film</string>
+</resources>
