@@ -26,6 +26,10 @@ public class MovieController {
         void onError(String message);
     }
 
+    public interface StateCallback {
+        void onResult(boolean value);
+    }
+
     public MovieController(Context context) {
         apiClient = new MovieApiClient();
         movieDao = AppDatabase.getInstance(context).movieDao();
@@ -52,15 +56,41 @@ public class MovieController {
 
     public void saveToHistory(Movie movie) {
         executor.execute(() -> {
+            Movie existing = movieDao.getMovieById(movie.id);
             movie.watchedAt = System.currentTimeMillis();
+            if (existing != null) {
+                movie.subscribed = existing.subscribed;
+            }
             movieDao.saveMovie(movie);
         });
     }
 
     public void subscribe(Movie movie) {
         executor.execute(() -> {
+            Movie existing = movieDao.getMovieById(movie.id);
             movie.subscribed = true;
+            if (existing != null && existing.watchedAt > 0) {
+                movie.watchedAt = existing.watchedAt;
+            }
             movieDao.saveMovie(movie);
+        });
+    }
+
+    public void unsubscribe(Movie movie) {
+        executor.execute(() -> {
+            Movie existing = movieDao.getMovieById(movie.id);
+            if (existing != null) {
+                existing.subscribed = false;
+                movieDao.saveMovie(existing);
+            }
+        });
+    }
+
+    public void isSubscribed(String movieId, StateCallback callback) {
+        executor.execute(() -> {
+            Movie existing = movieDao.getMovieById(movieId);
+            boolean result = existing != null && existing.subscribed;
+            mainHandler.post(() -> callback.onResult(result));
         });
     }
 
@@ -75,6 +105,16 @@ public class MovieController {
         executor.execute(() -> {
             List<Movie> list = movieDao.getSubscribed();
             mainHandler.post(() -> callback.onSuccess(new ArrayList<>(list)));
+        });
+    }
+
+    public void clearHistory(Runnable callback) {
+        executor.execute(() -> {
+            movieDao.clearHistory();
+
+            if (callback != null) {
+                mainHandler.post(callback);
+            }
         });
     }
 }

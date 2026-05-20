@@ -18,10 +18,7 @@ import java.util.ArrayList;
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
     private final ArrayList<Movie> movies = new ArrayList<>();
     private final OnScheduleClickListener listener;
-
-    private final String[] times = {
-            "02:08", "01:26", "00:17", "23:41", "21:30", "19:10", "17:45"
-    };
+    private String dayMode = "Hari Ini";
 
     public interface OnScheduleClickListener {
         void onMovieClick(Movie movie);
@@ -31,9 +28,14 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         this.listener = listener;
     }
 
-    public void setMovies(ArrayList<Movie> data) {
+    public void setMovies(ArrayList<Movie> data, String dayMode) {
         movies.clear();
-        movies.addAll(data);
+
+        if (data != null) {
+            movies.addAll(data);
+        }
+
+        this.dayMode = dayMode;
         notifyDataSetChanged();
     }
 
@@ -41,7 +43,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     @Override
     public ScheduleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_schedule, parent, false);
+                .inflate(R.layout.item_schedule_movie, parent, false);
         return new ScheduleViewHolder(view);
     }
 
@@ -49,21 +51,33 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position) {
         Movie movie = movies.get(position);
 
-        holder.tvTime.setText(times[position % times.length]);
-        holder.tvTitle.setText(movie.title);
-        holder.tvEpisode.setText(movie.episode);
-        holder.tvMeta.setText("⭐ " + movie.rating + " • " + movie.duration);
+        String title = movie.title != null && !movie.title.isEmpty()
+                ? movie.title
+                : "Untitled Movie";
 
-        if (position < 3) {
-            holder.tvStatus.setText("● Sudah Tayang");
+        String genre = movie.genre != null && !movie.genre.isEmpty()
+                ? movie.genre
+                : "Movie";
+
+        String duration = movie.duration != null && !movie.duration.isEmpty()
+                ? movie.duration
+                : "120 min";
+
+        holder.tvTitle.setText(title);
+        holder.tvMeta.setText(genre + " | " + duration);
+        holder.tvScheduleTime.setText(dayMode + " | " + getTime(position) + " WITA");
+
+        if (dayMode.equals("Hari Ini") && position % 3 == 0) {
+            holder.tvStatus.setText("Sudah Tayang");
         } else {
-            holder.tvStatus.setText("● Menunggu Update");
+            holder.tvStatus.setText("Akan Tayang");
         }
 
         Glide.with(holder.itemView.getContext())
                 .load(movie.posterUrl)
                 .centerCrop()
                 .placeholder(R.drawable.bg_card)
+                .error(R.drawable.bg_card)
                 .into(holder.ivPoster);
 
         holder.itemView.setOnClickListener(v -> listener.onMovieClick(movie));
@@ -74,17 +88,25 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         return movies.size();
     }
 
+    private String getTime(int position) {
+        String[] times = {
+                "10:00", "13:30", "16:00", "19:00", "21:30", "23:00"
+        };
+
+        return times[position % times.length];
+    }
+
     static class ScheduleViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPoster;
-        TextView tvTime, tvTitle, tvEpisode, tvMeta, tvStatus;
+        TextView tvTitle, tvMeta, tvScheduleTime, tvStatus;
 
         ScheduleViewHolder(@NonNull View itemView) {
             super(itemView);
+
             ivPoster = itemView.findViewById(R.id.ivPoster);
-            tvTime = itemView.findViewById(R.id.tvTime);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvEpisode = itemView.findViewById(R.id.tvEpisode);
             tvMeta = itemView.findViewById(R.id.tvMeta);
+            tvScheduleTime = itemView.findViewById(R.id.tvScheduleTime);
             tvStatus = itemView.findViewById(R.id.tvStatus);
         }
     }

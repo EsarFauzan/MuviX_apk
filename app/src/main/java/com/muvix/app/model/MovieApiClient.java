@@ -13,75 +13,92 @@ public class MovieApiClient {
     private static final String API_URL = "https://68ff8dfbe02b16d1753e765d.mockapi.io/film";
 
     public ArrayList<Movie> fetchMovies() throws Exception {
+        ArrayList<Movie> movies = new ArrayList<>();
+
         URL url = new URL(API_URL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setConnectTimeout(12000);
-        connection.setReadTimeout(12000);
 
-        int code = connection.getResponseCode();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(
-                code >= 200 && code < 300 ? connection.getInputStream() : connection.getErrorStream()
-        ));
+        connection.setRequestMethod("GET");
+        connection.setConnectTimeout(10000);
+        connection.setReadTimeout(10000);
+
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(connection.getInputStream())
+        );
 
         StringBuilder response = new StringBuilder();
         String line;
+
         while ((line = reader.readLine()) != null) {
             response.append(line);
         }
+
         reader.close();
         connection.disconnect();
 
-        if (code < 200 || code >= 300) {
-            throw new Exception("API error: " + code);
-        }
-
         JSONArray array = new JSONArray(response.toString());
-        ArrayList<Movie> movies = new ArrayList<>();
 
         for (int i = 0; i < array.length(); i++) {
-            JSONObject obj = array.getJSONObject(i);
-
-            String id = optString(obj, "id");
-            String title = optString(obj, "title", "name", "judul", "movieTitle");
-            String poster = optString(obj, "posterUrl", "poster", "image", "thumbnail", "cover");
-            String banner = optString(obj, "bannerUrl", "banner", "backdrop", "image");
-            String genre = optString(obj, "genre", "category", "type");
-            String episode = optString(obj, "episode", "eps", "durationType");
-            String duration = optString(obj, "duration", "time");
-            String views = optString(obj, "views", "view");
-            String description = optString(obj, "description", "synopsis", "desc");
-            double rating = optDouble(obj, "rating", "score");
-
-            if (title.isEmpty()) title = "Untitled Movie";
-            if (episode.isEmpty()) episode = "Film";
-            if (genre.isEmpty()) genre = "Movie";
-            if (duration.isEmpty()) duration = "120 min";
-            if (views.isEmpty()) views = "0 views";
-            if (description.isEmpty()) description = "Film pilihan dari MuviX.";
-
-            movies.add(new Movie(id, title, poster, banner, genre, episode, duration, views, description, rating));
+            JSONObject object = array.getJSONObject(i);
+            movies.add(parseMovie(object));
         }
 
         return movies;
     }
 
-    private String optString(JSONObject obj, String... keys) {
-        for (String key : keys) {
-            if (obj.has(key) && !obj.isNull(key)) {
-                String value = obj.optString(key, "");
-                if (value != null && !value.trim().isEmpty()) return value.trim();
-            }
-        }
-        return "";
+    private Movie parseMovie(JSONObject object) {
+        Movie movie = new Movie();
+
+        movie.id = object.optString("id", String.valueOf(System.currentTimeMillis()));
+
+        movie.title = getString(object, "title", "judul", "Untitled Movie");
+        movie.description = getString(object, "description", "ringkasan", "Film pilihan dari MuviX.");
+        movie.posterUrl = getString(object, "posterUrl", "gambar_poster", "");
+        movie.bannerUrl = getString(object, "bannerUrl", "gambar_sampul", "");
+        movie.genre = getString(object, "genre", "kategori", "Movie");
+
+        movie.episode = getString(object, "episode", "episode", "Movie");
+        movie.duration = getString(object, "duration", "durasi", "120 min");
+        movie.views = getString(object, "views", "jumlah_view", "0 views");
+
+        movie.rating = getRating(object);
+
+        return movie;
     }
 
-    private double optDouble(JSONObject obj, String... keys) {
-        for (String key : keys) {
-            if (obj.has(key) && !obj.isNull(key)) {
-                return obj.optDouble(key, 0.0);
-            }
+    private String getString(JSONObject object, String key1, String key2, String defaultValue) {
+        String value1 = object.optString(key1, "");
+
+        if (value1 != null && !value1.trim().isEmpty()) {
+            return value1;
         }
-        return 0.0;
+
+        String value2 = object.optString(key2, "");
+
+        if (value2 != null && !value2.trim().isEmpty()) {
+            return value2;
+        }
+
+        return defaultValue;
+    }
+
+    private double getRating(JSONObject object) {
+        Object value = object.opt("rating");
+
+        if (value == null) {
+            value = object.opt("skor_rating");
+        }
+
+        try {
+            double rating = Double.parseDouble(String.valueOf(value));
+
+            if (rating > 10) {
+                rating = rating / 10.0;
+            }
+
+            return Math.round(rating * 10.0) / 10.0;
+        } catch (Exception e) {
+            return 0.0;
+        }
     }
 }

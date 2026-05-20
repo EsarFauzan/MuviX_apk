@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_gold">#FFD84D</color>
+    <color name="bg_dark">#080B12</color>
+    <color name="danger_red">#FF4141</color>
+    <color name="primary_blue">#FFD84D</color>
+    <color name="primary_blue_soft">#B88A19</color>
+    <color name="stroke_soft">#2A303A</color>
+    <color name="stroke_strong">#4D4530</color>
+    <color name="surface_dark">#151B24</color>
+    <color name="surface_elevated">#242B35</color>
+    <color name="surface_soft">#1B222D</color>
+    <color name="text_muted">#8B93A0</color>
+    <color name="text_primary">#EEF2FA</color>
+    <color name="text_secondary">#D8D0BB</color>
+    <string name="app_name">MuviX</string>
+    <string name="base_url">https://68ff8dfbe02b16d1753e765d.mockapi.io/film</string>
+    <style name="Theme.MuviX" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorSecondary">@color/accent_gold</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

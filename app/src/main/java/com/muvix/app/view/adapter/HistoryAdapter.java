@@ -33,7 +33,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     public void setMovies(ArrayList<Movie> data) {
         movies.clear();
-        movies.addAll(data);
+
+        if (data != null) {
+            movies.addAll(data);
+        }
+
         notifyDataSetChanged();
     }
 
@@ -41,7 +45,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_history, parent, false);
+                .inflate(R.layout.item_history_movie, parent, false);
         return new HistoryViewHolder(view);
     }
 
@@ -49,18 +53,34 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
         Movie movie = movies.get(position);
 
-        holder.tvTitle.setText(movie.title);
-        holder.tvEpisode.setText(movie.episode);
-        holder.progressWatch.setProgress(70 + (position % 25));
-        holder.tvDate.setText(formatDate(movie.watchedAt));
+        String title = movie.title != null && !movie.title.isEmpty()
+                ? movie.title
+                : "Untitled Movie";
+
+        String genre = movie.genre != null && !movie.genre.isEmpty()
+                ? movie.genre
+                : "Movie";
+
+        String duration = movie.duration != null && !movie.duration.isEmpty()
+                ? movie.duration
+                : "120 min";
+
+        holder.tvTitle.setText(title);
+        holder.tvMeta.setText(genre + " | " + duration);
+        holder.tvDate.setText("Terakhir ditonton: " + formatDate(movie.watchedAt));
+
+        int progress = getFakeProgress(movie.id);
+        holder.progressWatch.setProgress(progress);
 
         Glide.with(holder.itemView.getContext())
                 .load(movie.posterUrl)
                 .centerCrop()
                 .placeholder(R.drawable.bg_card)
+                .error(R.drawable.bg_card)
                 .into(holder.ivPoster);
 
         holder.itemView.setOnClickListener(v -> listener.onMovieClick(movie));
+        holder.tvPlay.setOnClickListener(v -> listener.onMovieClick(movie));
     }
 
     @Override
@@ -69,23 +89,32 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     }
 
     private String formatDate(long time) {
-        if (time <= 0) return "Baru saja";
+        if (time <= 0) return "-";
 
-        SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy • HH:mm", new Locale("id", "ID"));
-        return format.format(new Date(time));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy, HH:mm", new Locale("id", "ID"));
+        return formatter.format(new Date(time));
+    }
+
+    private int getFakeProgress(String id) {
+        if (id == null) return 65;
+
+        int hash = Math.abs(id.hashCode());
+        return 35 + (hash % 60);
     }
 
     static class HistoryViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPoster;
-        TextView tvTitle, tvEpisode, tvDate;
+        TextView tvTitle, tvMeta, tvDate, tvPlay;
         ProgressBar progressWatch;
 
         HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
+
             ivPoster = itemView.findViewById(R.id.ivPoster);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvEpisode = itemView.findViewById(R.id.tvEpisode);
+            tvMeta = itemView.findViewById(R.id.tvMeta);
             tvDate = itemView.findViewById(R.id.tvDate);
+            tvPlay = itemView.findViewById(R.id.tvPlay);
             progressWatch = itemView.findViewById(R.id.progressWatch);
         }
     }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,18 +21,20 @@ import com.muvix.app.R;
 import com.muvix.app.controller.MovieController;
 import com.muvix.app.model.Movie;
 import com.muvix.app.view.adapter.ContinueAdapter;
-import com.muvix.app.view.adapter.MoviePosterAdapter;
+import com.muvix.app.view.adapter.HomeMovieAdapter;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private MovieController controller;
-    private MoviePosterAdapter movieAdapter;
+    private HomeMovieAdapter movieAdapter;
     private ContinueAdapter continueAdapter;
-    private ArrayList<Movie> allMovies = new ArrayList<>();
+    private final ArrayList<Movie> allMovies = new ArrayList<>();
 
     private ImageView ivHero;
-    private TextView tvHeroTitle, tvHeroMeta, tvSectionTitle;
+    private TextView tvHeroTitle, tvHeroMeta, tvSectionTitle, tvEmptyState, tvFilmCount;
+    private View layoutLoadingHome;
     private EditText inputSearch;
     private RecyclerView rvMovies, rvContinue;
     private BottomNavigationView bottomNavigation;
@@ -54,19 +57,21 @@ public class MainActivity extends AppCompatActivity {
         tvHeroTitle = findViewById(R.id.tvHeroTitle);
         tvHeroMeta = findViewById(R.id.tvHeroMeta);
         tvSectionTitle = findViewById(R.id.tvSectionTitle);
+        tvFilmCount = findViewById(R.id.tvFilmCount);
+        tvEmptyState = findViewById(R.id.tvEmptyState);
         inputSearch = findViewById(R.id.inputSearch);
         rvMovies = findViewById(R.id.rvMovies);
         rvContinue = findViewById(R.id.rvContinue);
         bottomNavigation = findViewById(R.id.bottomNavigation);
+        layoutLoadingHome = findViewById(R.id.layoutLoadingHome);
     }
 
     private void setupRecyclerViews() {
-        movieAdapter = new MoviePosterAdapter(movie -> {
-            controller.saveToHistory(movie);
-            openDetail(movie);
-        });
+        movieAdapter = new HomeMovieAdapter(this::openDetail);
 
         rvMovies.setLayoutManager(new GridLayoutManager(this, 2));
+        rvMovies.setHasFixedSize(false);
+        rvMovies.setNestedScrollingEnabled(false);
         rvMovies.setAdapter(movieAdapter);
 
         continueAdapter = new ContinueAdapter();
@@ -89,24 +94,18 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_home) {
-                loadHome();
                 return true;
             } else if (id == R.id.nav_schedule) {
-                tvSectionTitle.setText("Jadwal Tayang");
-                movieAdapter.setMovies(allMovies);
-                Toast.makeText(this, "Jadwal memakai data film sementara.", Toast.LENGTH_SHORT).show();
+                navigateTo(ScheduleActivity.class);
                 return true;
             } else if (id == R.id.nav_history) {
-                tvSectionTitle.setText("Riwayat Menonton");
-                controller.loadHistory(simpleCallback());
+                navigateTo(HistoryActivity.class);
                 return true;
             } else if (id == R.id.nav_subscribe) {
-                tvSectionTitle.setText("Subscribed Movie");
-                controller.loadSubscribed(simpleCallback());
+                navigateTo(SubscribeActivity.class);
                 return true;
             } else if (id == R.id.nav_profile) {
-                tvSectionTitle.setText("Profil MuviX");
-                Toast.makeText(this, "Halaman profil akan kita buat di tahap berikutnya.", Toast.LENGTH_SHORT).show();
+                navigateTo(ProfileActivity.class);
                 return true;
             }
 
@@ -114,33 +113,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private MovieController.MovieCallback simpleCallback() {
-        return new MovieController.MovieCallback() {
-            @Override
-            public void onSuccess(ArrayList<Movie> movies) {
-                movieAdapter.setMovies(movies);
-            }
-
-            @Override
-            public void onError(String message) {
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-            }
-        };
-    }
-
     private void loadHome() {
-        tvSectionTitle.setText("New Update Film");
+        tvSectionTitle.setText("Explore Movies");
+        layoutLoadingHome.setVisibility(View.VISIBLE);
+        rvMovies.setVisibility(View.GONE);
+        tvEmptyState.setVisibility(View.GONE);
+
         controller.loadMovies(new MovieController.MovieCallback() {
             @Override
             public void onSuccess(ArrayList<Movie> movies) {
-                allMovies = movies;
-                movieAdapter.setMovies(movies);
-                continueAdapter.setMovies(new ArrayList<>(movies.subList(0, Math.min(4, movies.size()))));
-                setupHero(movies);
+                layoutLoadingHome.setVisibility(View.GONE);
+                allMovies.clear();
+
+                if (movies != null) {
+                    allMovies.addAll(movies);
+                }
+
+                showMovies(allMovies, "Belum ada film tersedia");
+
+                if (!allMovies.isEmpty()) {
+                    setupHero(allMovies);
+
+                    ArrayList<Movie> continueMovies = new ArrayList<>(
+                            allMovies.subList(0, Math.min(4, allMovies.size()))
+                    );
+                    continueAdapter.setMovies(continueMovies);
+                } else {
+                    continueAdapter.setMovies(new ArrayList<>());
+                }
             }
 
             @Override
             public void onError(String message) {
+                layoutLoadingHome.setVisibility(View.GONE);
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
@@ -151,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
         Movie hero = movies.get(0);
         tvHeroTitle.setText(hero.title);
-        tvHeroMeta.setText("⭐ " + hero.rating + " • " + hero.genre + " • " + hero.duration);
+        tvHeroMeta.setText(String.format(Locale.getDefault(), "Rating %.1f | %s | %s", hero.rating, hero.genre, hero.duration));
 
         Glide.with(this)
                 .load(hero.bannerUrl == null || hero.bannerUrl.isEmpty() ? hero.posterUrl : hero.bannerUrl)
@@ -163,21 +168,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void filterMovies(String keyword) {
-        if (keyword.trim().isEmpty()) {
-            movieAdapter.setMovies(allMovies);
+        String query = keyword.trim().toLowerCase();
+
+        if (query.isEmpty()) {
+            tvSectionTitle.setText("Explore Movies");
+            showMovies(allMovies, "Belum ada film tersedia");
             return;
         }
 
+        tvSectionTitle.setText("Hasil Pencarian");
+
         ArrayList<Movie> filtered = new ArrayList<>();
-        String lower = keyword.toLowerCase();
 
         for (Movie movie : allMovies) {
-            if (movie.title != null && movie.title.toLowerCase().contains(lower)) {
+            String title = movie.title != null ? movie.title.toLowerCase() : "";
+            String genre = movie.genre != null ? movie.genre.toLowerCase() : "";
+            String episode = movie.episode != null ? movie.episode.toLowerCase() : "";
+
+            if (title.contains(query) || genre.contains(query) || episode.contains(query)) {
                 filtered.add(movie);
             }
         }
 
-        movieAdapter.setMovies(filtered);
+        showMovies(filtered, "Film \"" + keyword + "\" tidak ditemukan");
+    }
+
+    private void showMovies(ArrayList<Movie> movies, String emptyMessage) {
+        movieAdapter.setMovies(movies);
+        tvFilmCount.setText("(" + (movies != null ? movies.size() : 0) + " film)");
+
+        if (movies == null || movies.isEmpty()) {
+            rvMovies.setVisibility(View.GONE);
+            tvEmptyState.setVisibility(View.VISIBLE);
+            tvEmptyState.setText(emptyMessage);
+        } else {
+            rvMovies.setVisibility(View.VISIBLE);
+            tvEmptyState.setVisibility(View.GONE);
+        }
     }
 
     private void openDetail(Movie movie) {
@@ -193,5 +220,11 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("description", movie.description);
         intent.putExtra("rating", movie.rating);
         startActivity(intent);
+        overridePendingTransition(R.anim.page_enter, R.anim.page_exit);
+    }
+
+    private void navigateTo(Class<?> target) {
+        startActivity(new Intent(this, target));
+        overridePendingTransition(R.anim.page_enter, R.anim.page_exit);
     }
 }

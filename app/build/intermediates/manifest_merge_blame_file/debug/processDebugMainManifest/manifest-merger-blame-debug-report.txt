@@ -1,0 +1,187 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.muvix.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:3:5-67
+11-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:3:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:4:5-79
+12-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:4:22-76
+13
+14    <permission
+14-->[androidx.core:core:1.16.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\dcf8247230165f930880c5c84039d100\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+15        android:name="com.muvix.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.16.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\dcf8247230165f930880c5c84039d100\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.16.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\dcf8247230165f930880c5c84039d100\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.muvix.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.16.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\dcf8247230165f930880c5c84039d100\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.16.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\dcf8247230165f930880c5c84039d100\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:6:5-53:19
+21        android:allowBackup="true"
+21-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:7:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.16.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\dcf8247230165f930880c5c84039d100\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
+23        android:debuggable="true"
+24        android:extractNativeLibs="false"
+25        android:icon="@drawable/ic_home"
+25-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:8:9-41
+26        android:label="@string/app_name"
+26-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:9:9-41
+27        android:resizeableActivity="true"
+27-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:14:9-42
+28        android:roundIcon="@drawable/ic_home"
+28-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:10:9-46
+29        android:supportsRtl="true"
+29-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:11:9-35
+30        android:theme="@style/Theme.MuviX"
+30-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:12:9-43
+31        android:usesCleartextTraffic="true" >
+31-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:13:9-44
+32        <activity
+32-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:16:9-18:40
+33            android:name="com.muvix.app.view.PlayerActivity"
+33-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:17:13-48
+34            android:exported="false" />
+34-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:18:13-37
+35        <activity
+35-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:20:9-22:40
+36            android:name="com.muvix.app.view.DetailActivity"
+36-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:21:13-48
+37            android:exported="false" />
+37-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:22:13-37
+38        <activity
+38-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:24:9-26:40
+39            android:name="com.muvix.app.view.ProfileActivity"
+39-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:25:13-49
+40            android:exported="false" />
+40-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:26:13-37
+41        <activity
+41-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:28:9-30:40
+42            android:name="com.muvix.app.view.SubscribeActivity"
+42-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:29:13-51
+43            android:exported="false" />
+43-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:30:13-37
+44        <activity
+44-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:32:9-34:40
+45            android:name="com.muvix.app.view.HistoryActivity"
+45-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:33:13-49
+46            android:exported="false" />
+46-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:34:13-37
+47        <activity
+47-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:36:9-38:40
+48            android:name="com.muvix.app.view.ScheduleActivity"
+48-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:37:13-50
+49            android:exported="false" />
+49-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:38:13-37
+50        <activity
+50-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:40:9-47:20
+51            android:name="com.muvix.app.view.MainActivity"
+51-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:41:13-46
+52            android:exported="true" >
+52-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:42:13-36
+53            <intent-filter>
+53-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:43:13-46:29
+54                <action android:name="android.intent.action.MAIN" />
+54-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:44:17-69
+54-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:44:25-66
+55
+56                <category android:name="android.intent.category.LAUNCHER" />
+56-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:45:17-77
+56-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:45:27-74
+57            </intent-filter>
+58        </activity>
+59        <activity
+59-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:49:9-51:40
+60            android:name="com.muvix.app.view.SplashActivity"
+60-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:50:13-48
+61            android:exported="false" />
+61-->C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:51:13-37
+62
+63        <service
+63-->[androidx.room:room-runtime-android:2.8.4] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\e11d1a3c650a7d47fe2b5ba1bebba068\transformed\jetified-room-runtime\AndroidManifest.xml:24:9-28:63
+64            android:name="androidx.room.MultiInstanceInvalidationService"
+64-->[androidx.room:room-runtime-android:2.8.4] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\e11d1a3c650a7d47fe2b5ba1bebba068\transformed\jetified-room-runtime\AndroidManifest.xml:25:13-74
+65            android:directBootAware="true"
+65-->[androidx.room:room-runtime-android:2.8.4] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\e11d1a3c650a7d47fe2b5ba1bebba068\transformed\jetified-room-runtime\AndroidManifest.xml:26:13-43
+66            android:exported="false" />
+66-->[androidx.room:room-runtime-android:2.8.4] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\e11d1a3c650a7d47fe2b5ba1bebba068\transformed\jetified-room-runtime\AndroidManifest.xml:27:13-37
+67
+68        <provider
+68-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\075aad6c064b378f15da35859c22165c\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+69            android:name="androidx.startup.InitializationProvider"
+69-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\075aad6c064b378f15da35859c22165c\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+70            android:authorities="com.muvix.app.androidx-startup"
+70-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\075aad6c064b378f15da35859c22165c\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+71            android:exported="false" >
+71-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\075aad6c064b378f15da35859c22165c\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+72            <meta-data
+72-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\075aad6c064b378f15da35859c22165c\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+73                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+73-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\075aad6c064b378f15da35859c22165c\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+74                android:value="androidx.startup" />
+74-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\075aad6c064b378f15da35859c22165c\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+75            <meta-data
+75-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\a17d28ddcbaf026f958e669b05456cd5\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+76                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+76-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\a17d28ddcbaf026f958e669b05456cd5\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+77                android:value="androidx.startup" />
+77-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\a17d28ddcbaf026f958e669b05456cd5\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+78            <meta-data
+78-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+79                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+79-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+80                android:value="androidx.startup" />
+80-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+81        </provider>
+82
+83        <receiver
+83-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+84            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+84-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+85            android:directBootAware="false"
+85-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+86            android:enabled="true"
+86-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+87            android:exported="true"
+87-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+88            android:permission="android.permission.DUMP" >
+88-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+89            <intent-filter>
+89-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+90                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+90-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+90-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+91            </intent-filter>
+92            <intent-filter>
+92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+93                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+94            </intent-filter>
+95            <intent-filter>
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+96                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+96-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+96-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+97            </intent-filter>
+98            <intent-filter>
+98-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+99                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Esar Fauzan\.gradle\caches\9.0.0\transforms\78e234daad057f9f60d4615d665c9757\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+100            </intent-filter>
+101        </receiver>
+102    </application>
+103
+104</manifest>

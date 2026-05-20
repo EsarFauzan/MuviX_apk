@@ -29,7 +29,11 @@ public class MoviePosterAdapter extends RecyclerView.Adapter<MoviePosterAdapter.
 
     public void setMovies(ArrayList<Movie> data) {
         movies.clear();
-        movies.addAll(data);
+
+        if (data != null) {
+            movies.addAll(data);
+        }
+
         notifyDataSetChanged();
     }
 
@@ -44,15 +48,29 @@ public class MoviePosterAdapter extends RecyclerView.Adapter<MoviePosterAdapter.
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movies.get(position);
-        holder.tvTitle.setText(movie.title);
-        holder.tvEpisode.setText(movie.episode);
-        holder.tvViews.setText(movie.views);
-        holder.tvRating.setText("⭐ " + (movie.rating == 0 ? "-" : movie.rating));
+
+        String title = movie.title != null && !movie.title.isEmpty()
+                ? movie.title
+                : "Untitled Movie";
+
+        String episode = movie.episode != null && !movie.episode.isEmpty()
+                ? movie.episode
+                : "Movie";
+
+        String views = movie.views != null && !movie.views.isEmpty()
+                ? movie.views
+                : "0 views";
+
+        holder.tvTitle.setText(title);
+        holder.tvEpisode.setText(episode);
+        holder.tvViews.setText(views);
+        holder.tvRating.setText("â­ " + (movie.rating == 0 ? "-" : movie.rating));
 
         Glide.with(holder.itemView.getContext())
                 .load(movie.posterUrl)
                 .centerCrop()
                 .placeholder(R.drawable.bg_card)
+                .error(R.drawable.bg_card)
                 .into(holder.ivPoster);
 
         holder.itemView.setOnClickListener(v -> listener.onMovieClick(movie));
