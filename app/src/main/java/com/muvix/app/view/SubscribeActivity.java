@@ -2,6 +2,7 @@ package com.muvix.app.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,9 @@ public class SubscribeActivity extends AppCompatActivity {
     private SubscribeAdapter adapter;
     private BottomNavigationView bottomNavigation;
     private TextView tvTotal;
+    private RecyclerView rvSubscribe;
+    private View layoutEmptyWatchlist;
+    private TextView btnExploreEmpty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +34,11 @@ public class SubscribeActivity extends AppCompatActivity {
 
         controller = new MovieController(this);
 
-        RecyclerView rvSubscribe = findViewById(R.id.rvSubscribe);
+        rvSubscribe = findViewById(R.id.rvSubscribe);
         bottomNavigation = findViewById(R.id.bottomNavigation);
         tvTotal = findViewById(R.id.tvTotal);
+        layoutEmptyWatchlist = findViewById(R.id.layoutEmptyWatchlist);
+        btnExploreEmpty = findViewById(R.id.btnExploreEmpty);
 
         adapter = new SubscribeAdapter(this::openDetail);
 
@@ -41,6 +47,7 @@ public class SubscribeActivity extends AppCompatActivity {
         rvSubscribe.setAdapter(adapter);
 
         setupNavigation();
+        setupActions();
         loadSubscribed();
     }
 
@@ -55,15 +62,12 @@ public class SubscribeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Movie> movies) {
                 adapter.setMovies(movies);
-                tvTotal.setText("Total (" + movies.size() + ")");
+                int total = movies == null ? 0 : movies.size();
+                tvTotal.setText("Total (" + total + ")");
 
-                if (movies.isEmpty()) {
-                    Toast.makeText(
-                            SubscribeActivity.this,
-                            "Belum ada film yang disubscribe.",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                }
+                boolean isEmpty = total == 0;
+                rvSubscribe.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+                layoutEmptyWatchlist.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
             }
 
             @Override
@@ -71,6 +75,10 @@ public class SubscribeActivity extends AppCompatActivity {
                 Toast.makeText(SubscribeActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setupActions() {
+        btnExploreEmpty.setOnClickListener(v -> navigateTo(ScheduleActivity.class));
     }
 
     private void setupNavigation() {

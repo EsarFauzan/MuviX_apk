@@ -209,6 +209,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tvRecommendationOne"
                     android:layout_width="0dp"
                     android:layout_height="160dp"
                     android:layout_marginEnd="8dp"
@@ -222,6 +223,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvRecommendationTwo"
                     android:layout_width="0dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="8dp"

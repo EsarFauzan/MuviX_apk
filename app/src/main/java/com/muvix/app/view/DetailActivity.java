@@ -16,12 +16,15 @@ import com.muvix.app.R;
 import com.muvix.app.controller.MovieController;
 import com.muvix.app.model.Movie;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity {
     private Movie movie;
     private MovieController controller;
     private MaterialButton btnSubscribe;
+    private TextView tvRecommendationOne;
+    private TextView tvRecommendationTwo;
     private boolean isSubscribed = false;
 
     @Override
@@ -39,6 +42,8 @@ public class DetailActivity extends AppCompatActivity {
         TextView tvDescription = findViewById(R.id.tvDescription);
         MaterialButton btnWatch = findViewById(R.id.btnWatch);
         btnSubscribe = findViewById(R.id.btnSubscribe);
+        tvRecommendationOne = findViewById(R.id.tvRecommendationOne);
+        tvRecommendationTwo = findViewById(R.id.tvRecommendationTwo);
 
         tvTitle.setText(movie.title);
         tvMeta.setText(String.format(Locale.getDefault(), "Rating %.1f | %s | %s", movie.rating, movie.genre, movie.views));
@@ -57,6 +62,7 @@ public class DetailActivity extends AppCompatActivity {
         btnSubscribe.setOnClickListener(v -> toggleSubscribe());
 
         checkSubscribeStatus();
+        loadRecommendations();
     }
 
     private void checkSubscribeStatus() {
@@ -115,6 +121,68 @@ public class DetailActivity extends AppCompatActivity {
     private void finishWithAnimation() {
         finish();
         overridePendingTransition(R.anim.page_back_enter, R.anim.page_back_exit);
+    }
+
+    private void loadRecommendations() {
+        controller.loadMovies(new MovieController.MovieCallback() {
+            @Override
+            public void onSuccess(ArrayList<Movie> movies) {
+                ArrayList<Movie> recommendations = new ArrayList<>();
+
+                if (movies != null) {
+                    for (Movie candidate : movies) {
+                        if (candidate.id != null && candidate.id.equals(movie.id)) {
+                            continue;
+                        }
+
+                        boolean sameGenre = candidate.genre != null
+                                && movie.genre != null
+                                && candidate.genre.equalsIgnoreCase(movie.genre);
+
+                        if (sameGenre || recommendations.size() < 2) {
+                            recommendations.add(candidate);
+                        }
+
+                        if (recommendations.size() == 2) {
+                            break;
+                        }
+                    }
+                }
+
+                if (recommendations.size() > 0) {
+                    bindRecommendation(tvRecommendationOne, recommendations.get(0));
+                }
+
+                if (recommendations.size() > 1) {
+                    bindRecommendation(tvRecommendationTwo, recommendations.get(1));
+                }
+            }
+
+            @Override
+            public void onError(String message) {
+            }
+        });
+    }
+
+    private void bindRecommendation(TextView view, Movie recommendation) {
+        view.setText(recommendation.title == null ? "Movie" : recommendation.title);
+        view.setOnClickListener(v -> openRecommendation(recommendation));
+    }
+
+    private void openRecommendation(Movie recommendation) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("id", recommendation.id);
+        intent.putExtra("title", recommendation.title);
+        intent.putExtra("posterUrl", recommendation.posterUrl);
+        intent.putExtra("bannerUrl", recommendation.bannerUrl);
+        intent.putExtra("genre", recommendation.genre);
+        intent.putExtra("episode", recommendation.episode);
+        intent.putExtra("duration", recommendation.duration);
+        intent.putExtra("views", recommendation.views);
+        intent.putExtra("description", recommendation.description);
+        intent.putExtra("rating", recommendation.rating);
+        startActivity(intent);
+        overridePendingTransition(R.anim.page_enter, R.anim.page_exit);
     }
 
     private Movie getMovieFromIntent() {

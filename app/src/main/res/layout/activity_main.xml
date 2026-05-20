@@ -94,26 +94,38 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="66dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/bg_search"
-                app:boxBackgroundMode="none"
-                app:startIconDrawable="@drawable/ic_search"
-                app:startIconTint="@color/text_secondary">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/text_secondary" />
+
+                <EditText
                     android:id="@+id/inputSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="18dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
                     android:hint="Cari film di sini"
                     android:inputType="text"
-                    android:paddingStart="8dp"
+                    android:singleLine="true"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"
-                    android:textSize="17sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:textCursorDrawable="@null"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

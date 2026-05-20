@@ -121,6 +121,61 @@
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingBottom="28dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutEmptyWatchlist"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="26dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="28dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/bg_circle_dark"
+                android:gravity="center"
+                android:text="B"
+                android:textColor="@color/accent_gold"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Watchlist masih kosong"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:text="Simpan film dari halaman detail, lalu koleksimu akan muncul di sini."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/btnExploreEmpty"
+                android:layout_width="170dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_chip_active"
+                android:gravity="center"
+                android:text="Explore Film"
+                android:textColor="#5D4511"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

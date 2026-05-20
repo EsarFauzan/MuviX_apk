@@ -8,16 +8,20 @@
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\layout\\item_schedule_movie.xml"
     },
     {
+        "merged": "com.muvix.app-debug-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.muvix.app-main-6:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_bg_chip_active.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\bg_chip_active.xml"
     },
     {
-        "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_bg_circle_dark.xml.flat",
-        "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\bg_circle_dark.xml"
-    },
-    {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\color_nav_item_color.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\color\\nav_item_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_bg_circle_dark.xml.flat",
+        "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\bg_circle_dark.xml"
     },
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\anim_slide_in_right.xml.flat",
@@ -32,18 +36,6 @@
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\bg_progress.xml"
     },
     {
-        "merged": "com.muvix.app-debug-4:/anim_page_exit.xml.flat",
-        "source": "com.muvix.app-main-6:/anim/page_exit.xml"
-    },
-    {
-        "merged": "com.muvix.app-debug-4:/anim_page_enter.xml.flat",
-        "source": "com.muvix.app-main-6:/anim/page_enter.xml"
-    },
-    {
-        "merged": "com.muvix.app-debug-4:/anim_page_back_exit.xml.flat",
-        "source": "com.muvix.app-main-6:/anim/page_back_exit.xml"
-    },
-    {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_ic_home.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\ic_home.xml"
     },
@@ -54,6 +46,14 @@
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_bg_card.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\bg_card.xml"
+    },
+    {
+        "merged": "com.muvix.app-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.muvix.app-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.muvix.app-debug-4:/layout_activity_detail.xml.flat",
+        "source": "com.muvix.app-main-6:/layout/activity_detail.xml"
     },
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\layout_item_profile_recent.xml.flat",
@@ -76,12 +76,20 @@
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\layout\\activity_subscribe.xml"
     },
     {
+        "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\anim_page_back_exit.xml.flat",
+        "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\anim\\page_back_exit.xml"
+    },
+    {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_ic_play.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\ic_play.xml"
     },
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\layout_activity_player.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\layout\\activity_player.xml"
+    },
+    {
+        "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_muvix_logo.png.flat",
+        "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\muvix_logo.png"
     },
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\anim_slide_in_left.xml.flat",
@@ -108,6 +116,10 @@
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\bg_search.xml"
     },
     {
+        "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\anim_page_exit.xml.flat",
+        "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\anim\\page_exit.xml"
+    },
+    {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\layout_item_home_movie.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\layout\\item_home_movie.xml"
     },
@@ -126,10 +138,6 @@
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_ic_subscribe.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\drawable\\ic_subscribe.xml"
-    },
-    {
-        "merged": "com.muvix.app-debug-4:/anim_page_back_enter.xml.flat",
-        "source": "com.muvix.app-main-6:/anim/page_back_enter.xml"
     },
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\drawable_ic_profile.xml.flat",
@@ -156,8 +164,8 @@
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.muvix.app-debug-4:/layout_activity_profile.xml.flat",
-        "source": "com.muvix.app-main-6:/layout/activity_profile.xml"
+        "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\anim_page_back_enter.xml.flat",
+        "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\anim\\page_back_enter.xml"
     },
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\layout_activity_history.xml.flat",
@@ -184,10 +192,6 @@
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\layout\\item_history_movie.xml"
     },
     {
-        "merged": "com.muvix.app-debug-4:/layout_activity_schedule.xml.flat",
-        "source": "com.muvix.app-main-6:/layout/activity_schedule.xml"
-    },
-    {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\layout_item_continue.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\layout\\item_continue.xml"
     },
@@ -206,6 +210,10 @@
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\menu_menu_bottom_nav.xml.flat",
         "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\menu\\menu_bottom_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\anim_page_enter.xml.flat",
+        "source": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-main-6:\\anim\\page_enter.xml"
     },
     {
         "merged": "C:\\Users\\Esar Fauzan\\.gradle\\daemon\\9.0.0\\com.muvix.app-debug-4:\\layout_item_movie_poster.xml.flat",

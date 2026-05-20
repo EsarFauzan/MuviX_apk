@@ -40,9 +40,11 @@ drawable ic_schedule
 drawable ic_search
 drawable ic_star
 drawable ic_subscribe
+drawable muvix_logo
 id bottomNavigation
 id btnBack
 id btnClearHistory
+id btnExploreEmpty
 id btnFinishWatch
 id btnPlayPause
 id btnSubscribe
@@ -55,9 +57,11 @@ id ivBanner
 id ivHero
 id ivPlayerBanner
 id ivPoster
+id ivSplashLogo
 id layoutEmptyHistory
 id layoutEmptyRecent
 id layoutEmptySchedule
+id layoutEmptyWatchlist
 id layoutLoadingHome
 id layoutLoadingSchedule
 id mainScroll
@@ -67,6 +71,7 @@ id nav_profile
 id nav_schedule
 id nav_subscribe
 id progressPlayer
+id progressSplash
 id progressWatch
 id rvContinue
 id rvHistory
@@ -92,6 +97,8 @@ id tvPlayerMeta
 id tvPlayerTime
 id tvPlayerTitle
 id tvRating
+id tvRecommendationOne
+id tvRecommendationTwo
 id tvScheduleInfo
 id tvScheduleTime
 id tvSectionTitle
@@ -121,6 +128,8 @@ layout item_schedule_movie
 layout item_subscribe_movie
 menu bottom_nav_menu
 menu menu_bottom_nav
+mipmap ic_launcher
+mipmap ic_launcher_round
 string app_name
 string base_url
 style Theme.MuviX

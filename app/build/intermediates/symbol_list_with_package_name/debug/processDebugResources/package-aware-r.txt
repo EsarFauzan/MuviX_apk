@@ -3895,6 +3895,7 @@ drawable mtrl_switch_thumb_unchecked_pressed
 drawable mtrl_switch_track
 drawable mtrl_switch_track_decoration
 drawable mtrl_tabs_default_indicator
+drawable muvix_logo
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -4020,6 +4021,7 @@ id bounceEnd
 id bounceStart
 id btnBack
 id btnClearHistory
+id btnExploreEmpty
 id btnFinishWatch
 id btnPlayPause
 id btnSubscribe
@@ -4171,6 +4173,7 @@ id ivBanner
 id ivHero
 id ivPlayerBanner
 id ivPoster
+id ivSplashLogo
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -4178,6 +4181,7 @@ id layout
 id layoutEmptyHistory
 id layoutEmptyRecent
 id layoutEmptySchedule
+id layoutEmptyWatchlist
 id layoutLoadingHome
 id layoutLoadingSchedule
 id left
@@ -4321,6 +4325,7 @@ id position
 id postLayout
 id pressed
 id progressPlayer
+id progressSplash
 id progressWatch
 id progress_circular
 id progress_horizontal
@@ -4475,6 +4480,8 @@ id tvPlayerMeta
 id tvPlayerTime
 id tvPlayerTitle
 id tvRating
+id tvRecommendationOne
+id tvRecommendationTwo
 id tvScheduleInfo
 id tvScheduleTime
 id tvSectionTitle
@@ -4733,6 +4740,8 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu bottom_nav_menu
 menu menu_bottom_nav
+mipmap ic_launcher
+mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description

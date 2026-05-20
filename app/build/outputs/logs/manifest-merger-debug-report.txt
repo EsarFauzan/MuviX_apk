@@ -102,9 +102,9 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Es
 	android:resizeableActivity
 		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:14:9-42
 	android:roundIcon
-		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:10:9-46
+		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:10:9-54
 	android:icon
-		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:8:9-43
 	android:allowBackup
 		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
@@ -148,27 +148,27 @@ ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main
 	android:name
 		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:37:13-50
 activity#com.muvix.app.view.MainActivity
-ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:40:9-47:20
+ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:40:9-42:40
 	android:exported
-		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:42:13-36
+		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:42:13-37
 	android:name
 		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:41:13-46
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:43:13-46:29
-action#android.intent.action.MAIN
-ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:44:17-69
-	android:name
-		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:44:25-66
-category#android.intent.category.LAUNCHER
-ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:45:17-77
-	android:name
-		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:45:27-74
 activity#com.muvix.app.view.SplashActivity
-ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:49:9-51:40
+ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:44:9-51:20
 	android:exported
-		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:51:13-37
+		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:46:13-36
 	android:name
-		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:50:13-48
+		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:45:13-48
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:47:13-50:29
+action#android.intent.action.MAIN
+ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:48:17-69
+	android:name
+		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:48:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:49:17-77
+	android:name
+		ADDED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml:49:27-74
 uses-sdk
 INJECTED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Semester 4\Pemrograman Mobile\Tugas\MuviX_MVC_Starter\app\src\main\AndroidManifest.xml
