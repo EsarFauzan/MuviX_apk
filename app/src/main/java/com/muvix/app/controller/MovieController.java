@@ -42,16 +42,30 @@ public class MovieController {
             try {
                 ArrayList<Movie> movies = apiClient.fetchMovies();
                 if (movies.isEmpty()) movies = SampleData.movies();
+                appendSwappedMovie(movies);
                 ArrayList<Movie> finalMovies = movies;
                 mainHandler.post(() -> callback.onSuccess(finalMovies));
             } catch (Exception e) {
                 ArrayList<Movie> fallback = SampleData.movies();
+                appendSwappedMovie(fallback);
                 mainHandler.post(() -> {
                     callback.onSuccess(fallback);
                     callback.onError("API belum siap, pakai data contoh dulu.");
                 });
             }
         });
+    }
+
+    private void appendSwappedMovie(ArrayList<Movie> movies) {
+        if (movies == null) return;
+
+        for (Movie movie : movies) {
+            if (movie != null && SampleData.SWAPPED_ID.equals(movie.id)) {
+                return;
+            }
+        }
+
+        movies.add(0, SampleData.swappedMovie());
     }
 
     public void saveToHistory(Movie movie) {

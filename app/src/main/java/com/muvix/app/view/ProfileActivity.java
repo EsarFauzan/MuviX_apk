@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.muvix.app.R;
 import com.muvix.app.controller.MovieController;
+import com.muvix.app.model.AuthManager;
 import com.muvix.app.model.Movie;
 import com.muvix.app.view.adapter.ProfileRecentAdapter;
 
@@ -19,11 +20,15 @@ import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
     private MovieController controller;
+    private AuthManager authManager;
     private BottomNavigationView bottomNavigation;
 
     private TextView tvMinutes;
     private TextView tvHistoryCount;
     private TextView tvSubscribeCount;
+    private TextView tvAvatarInitial;
+    private TextView tvProfileName;
+    private TextView tvProfileEmail;
 
     private RecyclerView rvRecentActivity;
     private View layoutEmptyRecent;
@@ -35,23 +40,49 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         controller = new MovieController(this);
+        authManager = new AuthManager(this);
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
         tvMinutes = findViewById(R.id.tvMinutes);
         tvHistoryCount = findViewById(R.id.tvHistoryCount);
         tvSubscribeCount = findViewById(R.id.tvSubscribeCount);
+        tvAvatarInitial = findViewById(R.id.tvAvatarInitial);
+        tvProfileName = findViewById(R.id.tvProfileName);
+        tvProfileEmail = findViewById(R.id.tvProfileEmail);
         rvRecentActivity = findViewById(R.id.rvRecentActivity);
         layoutEmptyRecent = findViewById(R.id.layoutEmptyRecent);
+        View btnLogout = findViewById(R.id.btnLogout);
 
         setupRecentRecycler();
         setupNavigation();
+        setupProfileIdentity();
+        btnLogout.setOnClickListener(v -> logout());
         loadStats();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        if (!authManager.isLoggedIn()) {
+            openLoginAndFinish();
+            return;
+        }
+        setupProfileIdentity();
         loadStats();
+    }
+
+    private void setupProfileIdentity() {
+        String name = authManager.getCurrentName();
+        String email = authManager.getCurrentEmail();
+
+        tvProfileName.setText(name);
+        tvProfileEmail.setText(email.isEmpty() ? "Premium Member" : email);
+
+        String initial = "M";
+        if (!name.isEmpty()) {
+            initial = String.valueOf(Character.toUpperCase(name.charAt(0)));
+        }
+        tvAvatarInitial.setText(initial);
     }
 
     private void setupRecentRecycler() {
@@ -153,8 +184,19 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void navigateTo(Class<?> target) {
-        startActivity(new Intent(this, target));
-        overridePendingTransition(R.anim.page_enter, R.anim.page_exit);
+        TabNavigationHelper.navigate(this, ProfileActivity.class, target);
+    }
+
+    private void logout() {
+        authManager.logout();
+        openLoginAndFinish();
+    }
+
+    private void openLoginAndFinish() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
 

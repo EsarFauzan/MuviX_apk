@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <translate
-        android:duration="180"
-        android:fromXDelta="6%"
+        android:duration="260"
+        android:fromXDelta="16%"
+        android:interpolator="@android:interpolator/decelerate_cubic"
         android:toXDelta="0%" />
     <alpha
-        android:duration="180"
-        android:fromAlpha="0.88"
+        android:duration="240"
+        android:fromAlpha="0.68"
+        android:interpolator="@android:interpolator/decelerate_quad"
         android:toAlpha="1.0" />
 </set>

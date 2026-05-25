@@ -2,5 +2,5 @@
     <item
         android:color="@color/accent_gold"
         android:state_checked="true" />
-    <item android:color="#D9D1B8" />
+    <item android:color="@color/text_secondary" />
 </selector>

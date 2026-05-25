@@ -3,6 +3,8 @@ package com.muvix.app.model;
 import java.util.ArrayList;
 
 public class SampleData {
+    public static final String SWAPPED_ID = "swapped_special";
+
     public static ArrayList<Movie> movies() {
         ArrayList<Movie> list = new ArrayList<>();
 
@@ -42,6 +44,23 @@ public class SampleData {
                 "Action", "Movie", "130 min", "510K views",
                 "Aksi pilot tempur dengan rasa nostalgia dan adrenalin tinggi.", 8.2));
 
+        list.add(swappedMovie());
+
         return list;
+    }
+
+    public static Movie swappedMovie() {
+        return new Movie(
+                SWAPPED_ID,
+                "Swapped",
+                "local:sampul_swapped.jpeg",
+                "local:sampul_swapped.jpeg",
+                "Romance",
+                "Movie",
+                "110 min",
+                "New Release",
+                "Kisah dua orang yang hidupnya berubah setelah kejadian tak terduga.",
+                8.0
+        );
     }
 }

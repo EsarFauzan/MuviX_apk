@@ -9,12 +9,16 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.muvix.app.R;
+import com.muvix.app.model.AuthManager;
 
 public class SplashActivity extends AppCompatActivity {
+    private AuthManager authManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        authManager = new AuthManager(this);
 
         ImageView logo = findViewById(R.id.ivSplashLogo);
         logo.setAlpha(0f);
@@ -28,7 +32,8 @@ public class SplashActivity extends AppCompatActivity {
                 .start();
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            Class<?> target = authManager.isLoggedIn() ? MainActivity.class : LoginActivity.class;
+            startActivity(new Intent(SplashActivity.this, target));
             finish();
         }, 1500);
     }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.muvix.app.R;
 import com.muvix.app.model.Movie;
+import com.muvix.app.view.ImageSourceResolver;
 
 import java.util.ArrayList;
 
@@ -69,7 +70,7 @@ public class HomeMovieAdapter extends RecyclerView.Adapter<HomeMovieAdapter.Home
         holder.tvRating.setText(String.format(java.util.Locale.getDefault(), "Rate %.1f", rating));
 
         Glide.with(holder.itemView.getContext())
-                .load(movie.posterUrl)
+                .load(ImageSourceResolver.resolve(holder.itemView.getContext(), movie.posterUrl))
                 .centerCrop()
                 .placeholder(R.drawable.bg_card)
                 .error(R.drawable.bg_card)

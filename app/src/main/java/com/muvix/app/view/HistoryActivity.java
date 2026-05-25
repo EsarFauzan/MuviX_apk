@@ -146,7 +146,6 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private void navigateTo(Class<?> target) {
-        startActivity(new Intent(this, target));
-        overridePendingTransition(R.anim.page_enter, R.anim.page_exit);
+        TabNavigationHelper.navigate(this, HistoryActivity.class, target);
     }
 }

@@ -1,15 +1,15 @@
 <resources>
-    <color name="bg_dark">#080B12</color>
-    <color name="surface_dark">#151B24</color>
-    <color name="surface_soft">#1B222D</color>
-    <color name="surface_elevated">#242B35</color>
-    <color name="stroke_soft">#2A303A</color>
-    <color name="stroke_strong">#4D4530</color>
-    <color name="primary_blue">#FFD84D</color>
-    <color name="primary_blue_soft">#B88A19</color>
-    <color name="accent_gold">#FFD84D</color>
-    <color name="text_primary">#EEF2FA</color>
-    <color name="text_secondary">#D8D0BB</color>
-    <color name="text_muted">#8B93A0</color>
-    <color name="danger_red">#FF4141</color>
+    <color name="bg_dark">#000000</color>
+    <color name="surface_dark">#141414</color>
+    <color name="surface_soft">#1F1F1F</color>
+    <color name="surface_elevated">#2A2A2A</color>
+    <color name="stroke_soft">#333333</color>
+    <color name="stroke_strong">#5C1218</color>
+    <color name="primary_blue">#E50914</color>
+    <color name="primary_blue_soft">#B20710</color>
+    <color name="accent_gold">#E50914</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="text_muted">#808080</color>
+    <color name="danger_red">#E50914</color>
 </resources>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.muvix.app.R;
 import com.muvix.app.model.Movie;
+import com.muvix.app.view.ImageSourceResolver;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,10 @@ public class ContinueAdapter extends RecyclerView.Adapter<ContinueAdapter.Contin
         holder.progressWatch.setProgress(65);
 
         Glide.with(holder.itemView.getContext())
-                .load(movie.bannerUrl == null || movie.bannerUrl.isEmpty() ? movie.posterUrl : movie.bannerUrl)
+                .load(ImageSourceResolver.resolve(
+                        holder.itemView.getContext(),
+                        movie.bannerUrl == null || movie.bannerUrl.isEmpty() ? movie.posterUrl : movie.bannerUrl
+                ))
                 .centerCrop()
                 .placeholder(R.drawable.bg_card)
                 .into(holder.ivPoster);

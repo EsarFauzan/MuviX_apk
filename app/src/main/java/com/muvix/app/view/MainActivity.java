@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.muvix.app.R;
 import com.muvix.app.controller.MovieController;
+import com.muvix.app.model.AuthManager;
 import com.muvix.app.model.Movie;
 import com.muvix.app.view.adapter.ContinueAdapter;
 import com.muvix.app.view.adapter.HomeMovieAdapter;
@@ -28,12 +29,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private MovieController controller;
+    private AuthManager authManager;
     private HomeMovieAdapter movieAdapter;
     private ContinueAdapter continueAdapter;
     private final ArrayList<Movie> allMovies = new ArrayList<>();
 
     private ImageView ivHero;
     private TextView tvHeroTitle, tvHeroMeta, tvSectionTitle, tvEmptyState, tvFilmCount;
+    private TextView tvHomeUserName, tvAvatarInitial;
     private View layoutLoadingHome;
     private EditText inputSearch;
     private RecyclerView rvMovies, rvContinue;
@@ -45,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         controller = new MovieController(this);
+        authManager = new AuthManager(this);
         initViews();
         setupRecyclerViews();
         setupSearch();
         setupNavigation();
+        bindUserHeader();
         loadHome();
     }
 
@@ -59,11 +64,24 @@ public class MainActivity extends AppCompatActivity {
         tvSectionTitle = findViewById(R.id.tvSectionTitle);
         tvFilmCount = findViewById(R.id.tvFilmCount);
         tvEmptyState = findViewById(R.id.tvEmptyState);
+        tvHomeUserName = findViewById(R.id.tvHomeUserName);
+        tvAvatarInitial = findViewById(R.id.tvAvatarInitial);
         inputSearch = findViewById(R.id.inputSearch);
         rvMovies = findViewById(R.id.rvMovies);
         rvContinue = findViewById(R.id.rvContinue);
         bottomNavigation = findViewById(R.id.bottomNavigation);
         layoutLoadingHome = findViewById(R.id.layoutLoadingHome);
+    }
+
+    private void bindUserHeader() {
+        String name = authManager.getCurrentName();
+        if (name == null || name.trim().isEmpty()) {
+            name = "Explorer";
+        }
+        tvHomeUserName.setText("Halo, " + name);
+
+        String initial = String.valueOf(Character.toUpperCase(name.charAt(0)));
+        tvAvatarInitial.setText(initial);
     }
 
     private void setupRecyclerViews() {
@@ -159,7 +177,10 @@ public class MainActivity extends AppCompatActivity {
         tvHeroMeta.setText(String.format(Locale.getDefault(), "Rating %.1f | %s | %s", hero.rating, hero.genre, hero.duration));
 
         Glide.with(this)
-                .load(hero.bannerUrl == null || hero.bannerUrl.isEmpty() ? hero.posterUrl : hero.bannerUrl)
+                .load(ImageSourceResolver.resolve(
+                        this,
+                        hero.bannerUrl == null || hero.bannerUrl.isEmpty() ? hero.posterUrl : hero.bannerUrl
+                ))
                 .centerCrop()
                 .placeholder(R.drawable.bg_card)
                 .into(ivHero);
@@ -224,7 +245,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void navigateTo(Class<?> target) {
-        startActivity(new Intent(this, target));
-        overridePendingTransition(R.anim.page_enter, R.anim.page_exit);
+        TabNavigationHelper.navigate(this, MainActivity.class, target);
     }
 }

@@ -50,7 +50,10 @@ public class DetailActivity extends AppCompatActivity {
         tvDescription.setText(movie.description);
 
         Glide.with(this)
-                .load(movie.bannerUrl == null || movie.bannerUrl.isEmpty() ? movie.posterUrl : movie.bannerUrl)
+                .load(ImageSourceResolver.resolve(
+                        this,
+                        movie.bannerUrl == null || movie.bannerUrl.isEmpty() ? movie.posterUrl : movie.bannerUrl
+                ))
                 .centerCrop()
                 .placeholder(R.drawable.bg_card)
                 .into(ivBanner);
@@ -92,7 +95,7 @@ public class DetailActivity extends AppCompatActivity {
             btnSubscribe.setBackgroundTintList(ColorStateList.valueOf(
                     ContextCompat.getColor(this, R.color.accent_gold)
             ));
-            btnSubscribe.setTextColor(ContextCompat.getColor(this, R.color.bg_dark));
+            btnSubscribe.setTextColor(ContextCompat.getColor(this, R.color.text_primary));
         } else {
             btnSubscribe.setText("Save");
             btnSubscribe.setBackgroundTintList(ColorStateList.valueOf(
